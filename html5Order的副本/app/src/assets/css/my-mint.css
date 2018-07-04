@@ -1,0 +1,77 @@
+
+
+.mint-header{
+  background: #fff;
+  color:#090909;
+  font-weight: bolder;
+  font-size:1.8rem;
+}
+.mint-cell{
+  min-height:3.41666667rem;
+}
+.mint-cell-wrapper{
+  padding: 0px;
+}
+.mint-cell-title{
+  font-size:1.3rem;
+  margin-left:1.25rem;
+  color: rgb(83,83,83);
+  font-family: PingFangSC-Regular;
+}
+
+.mint-cell-value{
+  font-size:1.6rem;
+  margin-right:1.25rem;
+  color: rgb(62,62,62);
+  font-family: PingFangSC-Regular;
+}
+.mint-button--primary{
+
+ background: rgb(93,143,242);
+}
+.mint-button{
+  border-radius: 0px;
+
+  height: 4.083333333333rem;
+}
+.paytitle{
+  font-size:1.3rem;
+  padding-left:1.25rem;
+  color: rgb(83,83,83);
+  font-family: PingFangSC-Regular;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  background: #fff;
+}
+
+.mint-radiolist .mint-cell-title{
+  margin-left: 2.8rem;
+
+}
+.price .mint-cell-value{
+  font-size:2.1rem;
+  color: rgb(215,97,73);
+  font-family: PingFangSC-Semibold;
+}
+.mint-radio-input:checked + .mint-radio-core{
+  background-color: rgb(97,170,76);
+  border-color: rgb(97,170,76);
+}
+.marketprice .mint-cell-value{
+  text-decoration: line-through;
+  color: rgb(174,174,174);
+}
+ul{
+  background: #fff;
+  padding: 0px;
+}
+ul li{
+  list-style: none;
+  display: block;
+  overflow: hidden;
+  height: 4.08333333rem;
+  line-height: 2.08333333rem;
+  border-top:  0.08333333rem solid rgb(229,232,234);
+  width: 31.25rem;
+
+}
