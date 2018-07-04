@@ -1,0 +1,43 @@
+<!--pages/startcompany/startcompany.wxml-->
+<!--index.wxml-->  
+<scroll-view  class="coupons-scroll" scroll-x="true">
+<view class="swiper-tab">  
+    <view  class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" data-typeCode="{{item.type_code}}" bindtap="swichNav" wx:for="{{type_list}}">{{item.type_name}}<view wx:if="{{currentTab==index}}" style='height:5rpx;background:rgb(53,145,255);width:100rpx;margin:0 auto;'></view></view> 
+     
+</view>  
+</scroll-view>
+<view class='shequbox' style='height:{{srollheight}}px;'>
+  <swiper style='height:{{srollheight}}px;' current="{{currentTab}}" class="swiper-box" duration="300"    bindchange="bindChange">  
+    <!-- 注册公司 -->  
+    <swiper-item wx:for="{{type_list}}"> 
+      <scroll-view scroll-y="true" bindscrolltolower="setLoading" style='height:{{srollheight}}px;'>
+      <view>
+       <view >
+       <view style='width:742rpx;margin:  0 auto;'>
+           <view wx:for="{{article_list}}" class="ArticleDetail" bindtap='skipArticleDetail' data-id="{{item.article_id}}">
+           <image src="{{item.cover_image}}"></image>
+            <view class="ArticleDetailRight">
+               <view class="ArticleTitle">
+               {{item.article_title}}
+               </view>
+               <view class="ArticleDescription">
+               {{item.article_desc}}
+               </view>
+               <view class="Articletime">
+                 <text>{{item.create_time}}</text><image src="../../image/home_time_icon@2x.png" style="width:24rpx;height:24rpx;margin-right:20rpx;margin-bottom:-4rpx;"></image>
+                 <text>{{item.visit_number}}</text><image src="../../image/home_read_iocn@2x.png" style='width:24rpx;height:24rpx;margin-bottom:-4rpx;'></image>
+               </view>
+            </view>
+           </view>
+           </view>
+        </view>
+      </view>
+      <view class="button-wrapper"> 
+ <button type="default" size="default" loading="{{loading}}" disabled="{{disabled}}" bindtap="setLoading" style=' color: rgb(83,83,83);font-size:26rpx;font-family:PingFangSC-Regular;'> 
+ {{loadText}} 
+ </button> 
+</view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

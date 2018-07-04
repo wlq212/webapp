@@ -1,0 +1,24 @@
+/* pages/center/center.wxss */
+.commonPerson{
+  height:98rpx;
+  line-height: 98rpx;
+  width:750rpx;
+  background: #fff;
+  overflow: hidden;
+}
+.commonPersonLeft{
+  float:left;
+  color: rgb(83,83,83);
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+
+}
+.commonPersonLeftIco{
+  width:38rpx;
+  height: 42rpx;
+ padding-left:30rpx;
+ 
+}
+.commonPersonRight{
+  float:right;
+}

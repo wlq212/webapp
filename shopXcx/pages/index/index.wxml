@@ -1,0 +1,215 @@
+<!--index.wxml-->
+<!--pages/start/start.wxml-->
+<view style="position:relative;width:750rpx;text_aligin:center;padding-bottom:100rpx;margin-top:-80rpx;overflow:hidden;height:1100rpx;" wx:if="{{!startShow}}">
+<image src="https://lzh-images.oss-cn-shenzhen.aliyuncs.com/6e0499f9beea6ef40fe35d7488ebe4e9.png" bindload="imageLoad" style="width:{{ images.width }}rpx; height:{{ images.height }}rpx;" ></image>
+<view style=' display: -webkit-flex; display: flex; position:absolute;bottom:100rpx;flex-direction:row;justify-content:center;width:750rpx;height:120rpx;'>
+  <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" ><image src="../../image/1527818467790.jpg" style='width:292rpx;height:114rpx;'></image></button>
+  </view>
+</view >
+
+<view style='width:750rpx;overflow:hidden;' style='height:{{srollheight}}px;' wx:if="{{startShow}}">
+ <view class="container" >
+   <view wx:if="{{!menuShow}}" style='width:700rpx;'>
+   <view  bindtap="bindPickerChange" >
+    <text style="font-size:30rpx;float:left;font-family:PingFangSC-Regular;color:rgb(83,83,83);">{{area_name}}</text><image src="../../image/home_address_selection_btn@2x.png" style="width:20rpx;height:10rpx;margin-left:20rpx;margin-bottom:15rpx;"></image>
+    </view>
+    
+    <view style='position:absolute;width:750rpx;height:1160rpx;text-align:center;z-index:1;margin-left:-26rpx;font-size:15px;float:left;font-family:PingFangSC-Regular;color:rgb(83,83,83);' wx:if="{{showpick}}" bindtap='pickShowHidden' >
+     <view class="{{needAnimation ?'slidown' : 'slidup'}}"  style='width:750rpx;background:#fff;position:absolute;overflow:hidden;' >
+        <view  class="citySeletc" bindtap='slelctCityle' style="{{item.area_id==areaId?'color:rgb(66,125,252);':''}}" data-cityname="{{item.area_name}}" data-cityId="{{item.area_id}}" wx:for="{{area_list}}">{{item.area_name}}</view>
+      </view>
+    </view>
+    
+   </view>
+   <scroll-view  scroll-y style='height:{{srollheight}}px;'  wx:if="{{!menuShow}}">
+      <view>
+      <!-- banner 图 start -->
+            <view class="swiper-container"  >
+        <swiper class="swiper_box" 
+                    autoplay="{{autoplay}}"  interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange" style='height:374rpx;'>
+            <block wx:for="{{banner_list}}" wx:key="id">
+                <swiper-item  >
+                    <image bindtap="tapBanner" data-id="{{item.sku_id}}" src="{{item. banner_url}}" style="width:760rpx;height:374rpx;margin-left:-5rpx;" class="slide-image"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="dots" style='height:20rpx;width:750rpx;position:absolute;bottom:55rpx;'>  
+            <block wx:for="{{banner_list}}" wx:key="unique">  
+                <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>  
+            </block>  
+        </view>
+   
+  
+       <!-- banner 图end -->
+
+       <!-- 热门服务 start -->
+       <view class="hotService" style='padding:0rpx 15rpx;padding-right:25rpx;'>
+         <view class="title">
+         <view class="left">
+         热门服务
+         </view>
+         <view class="right" >
+         <button bindtap='moreService' >查看更多></button>
+         </view>
+         </view>
+          <view class="content coupons" style="height:310rpx;">
+           <scroll-view style="height:310rpx;" class="coupons-scroll" scroll-x="true">
+              <view wx:for="{{commend_list}}" class="serviceInfo" bindtap='skipmoreService' data-id="{{item.sku_id}}" data-skuid="{{item.sku_id}}">
+                <image style='width:260rpx;height:190rpx;margin-left:10rpx;' src="{{item.cover_image}}"></image>
+                <view class="serviceName">
+                   {{item.name}}
+                </view>
+                <view class="servicePrice" >
+                   <text>¥{{item.sku_price}}</text>
+                   <text style="float:right;margin-right:16rpx;font-size:24rpx; font-family:PingFangSC-Regular;color:rgb(174,174,174);margin-top:10rpx;text-decoration:line-through;">¥{{item.market_value}}</text>
+                </view>
+              </view>
+           </scroll-view>
+          </view>
+       </view>
+       <!-- 热门服务end -->
+
+        <!-- 热门文章 start -->
+       <view class="hotArticle" style='padding-right:5rpx;'>
+        <view class="title">
+         <view class="left">
+         热门文章
+         </view>
+         <view class="right">
+           <button bindtap='moreArticle' >查看更多></button>
+         </view>
+        </view>
+         <view style=' width:742rpx;margin:  0 auto;'>
+         
+           <view bindtap='skipArticleDetail' data-id="{{item.article_id}}" class="ArticleDetail" wx:for="{{article_list}}">
+           <image src="{{item.article_url}}"></image>
+            <view class="ArticleDetailRight">
+               <view class="ArticleTitle">
+               {{item.article_title}}
+               </view>
+               <view class="ArticleDescription">
+                {{item.article_desc}}
+               </view>
+               <view class="Articletime">
+                 <text>{{item.create_time}}</text><image src="../../image/home_time_icon@2x.png" style="width:24rpx;height:24rpx;margin-right:20rpx;margin-bottom:-4rpx;"></image>
+                 <text>{{item.visit_number}}</text><image src="../../image/home_read_iocn@2x.png" style='width:24rpx;height:24rpx;margin-bottom:-4rpx;'></image>
+               </view>
+            </view>
+           </view>
+          </view>
+       </view>
+       
+       <!-- 热门文章 end -->
+       <!-- 关于我们 start -->
+       <view class="about">
+        <view class="title" style='padding:0rpx 15rpx;'>
+        <view class="left">
+        关于我们
+         </view>
+         <view class="right">
+         <button bindtap='moreAbout'>查看更多></button>
+         </view>
+        </view>
+         <view class="Aboutcontent">
+          <navigator url="/pages/moreAbout/moreAbout">
+          <image src="../../image/home_AboutUs@2x.png" style='width:737rpx;margin-left:-8rpx;'></image>
+           </navigator>
+          </view>
+       </view>
+       <!-- 关于我们end -->
+      </view>
+      </view>
+    </scroll-view>
+
+    <!-- 个人中心 -->
+    <scroll-view scroll-y style="height:1110rpx;background:rgb(245,248,252)" wx:if="{{menuShow}}" >
+      <view>
+         <view class="personcenter" bindtap='percenter'>
+         <view style='width:450rpx;padding-top:130rpx;padding-left:30rpx;overflow:hidden;'>
+          <image style="width:120rpx;height:120rpx;border-radius:60%;float:left;" src="{{userInfo.avatarUrl}}"></image>
+          <view style='float:left;margin-left:20rpx;padding-top:10rpx;'>
+              <view style='color:#fff;'>{{userInfo.nickName}}</view>
+              <button style="display:inline-block;background:rgb(178,206,247);color:rgb(67,125,251);font-size:28rpx;border-radius:30rpx;height:50rpx;line-height:50rpx;">{{phoneText}}</button>
+            </view>
+          </view>
+          <view style="float:right;margin-right:30rpx;margin-top:-90rpx;">
+           <image  style="width:17rpx;height:30rpx"src="../../image/photo_return_btn@2x.png"></image>
+          </view>
+         </view>
+         <navigator url="/pages/{{oderList}}/{{oderList}}">
+         <view class="commonPerson">
+           <view class="commonPersonLeft">
+            <image class="commonPersonLeftIco" src="../../image/persona_indent_icon@2x.png"  style='margin-top:30rpx'></image>
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>我的订单</view>
+           </view>
+           <view class="commonPersonRight">
+            <image style="width:17rpx;height:30rpx;margin-right:30rpx;" src="../../image/persona__return1_btn@2x.png"></image>
+           </view>
+         </view>
+         </navigator>
+<navigator url="/pages/connact/connact">
+          <view class="commonPerson" style='margin-top:30rpx;'>
+          
+           <view class="commonPersonLeft">
+            <image class="commonPersonLeftIco" src="../../image/persona_relation_icon@2x.png"  style='margin-top:30rpx;width:45rpx;'></image>
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>
+             联系我们</view>
+           </view>
+           <view class="commonPersonRight">
+            <image style="width:17rpx;height:30rpx;margin-right:30rpx;" src="../../image/persona__return1_btn@2x.png"></image>
+           </view>
+         </view>
+         </navigator>
+
+        <navigator url="/pages/moreAbout/moreAbout">
+         <view class="commonPerson" style='border-top:1px solid #e5e8ea;'>
+           <view class="commonPersonLeft">
+            <image class="commonPersonLeftIco" src="../../image/persona_us_icon@2x.png"  style='margin-top:30rpx;width:40rpx;'></image>
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>关于我们</view>
+           </view>
+           <view class="commonPersonRight">
+            <image style="width:17rpx;height:30rpx;margin-right:30rpx;" src="../../image/persona__return1_btn@2x.png"></image>
+           </view>
+         </view>
+        </navigator>
+         <view  class="commonPerson" bindtap="skipCwgXzs" style='border-top:1px solid #e5e8ea;'>
+           <view class="commonPersonLeft">
+            <image class="commonPersonLeftIco" src="../../image/persona_helper_icon@2x.png"  style='margin-top:30rpx;width:42rpx;'></image>
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>财务官小助手</view>
+           </view>
+           <view class="commonPersonRight" >
+            <image style="width:17rpx;height:30rpx;margin-right:30rpx;" src="../../image/persona__return1_btn@2x.png"></image>
+           </view>
+         </view>
+      </view>
+    </scroll-view>  
+  </view>
+  <view class="footer" style='box-shadow:0 0 10rpx #d3e5fe;'>
+  <view style='position:relative;'>
+        <button  bindtap='Index' class="contactButton button" style='position:absoute;bottom:90rpx;'>
+        <image src="../../image/tab_btn_sel_home@2x.png" wx:if="{{indexHome}}" style='width:39rpx;height:42rpx;display:block;margin-left:80rpx;margin-top:0rpx;'></image>
+        <image src="../../image/tab_btn_nor_home@2x.png" wx:if="{{!indexHome}}" style='width:39rpx;height:42rpx;display:block;margin-left:80rpx;margin-top:0rpx;'></image>
+          <view wx:if="{{!indexHome}}" style='margin-top:-10rpx;font-family:MicrosoftYaHei;font-size:24rpx;color:rgb(173,206,251)'>首页</view>
+           <view wx:if="{{indexHome}}" style='margin-top:-10rpx;font-family:MicrosoftYaHei;font-size:24rpx;color:rgb(83,83,83);'>首页</view>
+        </button>
+         <button  wx:if="{{!bollonee}}" bindtap='aboutTime' class="contactButton button" style='position:absoute;bottom:90rpx;z-index:111;background-color:rgba(255,255,255,0)' >
+        <image wx:if="{{!consulte}}" src="../../image/tab_btn_nor_Consulting拷贝@2x.png" style='width:104rpx;height:104rpx;display:block;margin-left:45rpx;margin-top:30rpx;z-index:11111'></image>
+        <image wx:if="{{consulte}}" src="../../image/tab_btn_sel_Consulting@2x.png" style='width:104rpx;height:104rpx;display:block;margin-left:45rpx;margin-top:30rpx;z-index:11111'></image>
+        
+        <view style='margin-top:0rpx;font-size:24rpx;color:rgb(173,206,251)'>咨询财务官</view>
+        </button>
+        <button  wx:if="{{bollonee}}" button-hover="hoverClass" open-type="contact" bindtap='aboutme' class="contactButton button" style='position:absoute;bottom:90rpx;z-index:111;background-color:rgba(255,255,255,0);' >
+        <image wx:if="{{!consulte}}" src="../../image/tab_btn_nor_Consulting拷贝@2x.png" style='width:104rpx;height:104rpx;display:block;margin-left:45rpx;margin-top:30rpx;z-index:11111'></image>
+        <image wx:if="{{consulte}}" src="../../image/tab_btn_sel_Consulting@2x.png" style='width:104rpx;height:104rpx;display:block;margin-left:45rpx;margin-top:30rpx;z-index:11111'></image>
+        
+        <view style='margin-top:0rpx;font-size:24rpx;color:rgb(173,206,251)'>咨询财务官</view>
+        </button>
+      <button style='position:absoute;bottom:90rpx;'  class="contactButton button"  bindtap="About" >
+          <image src="../../image/tab_btn_nor_persona@2x.png" wx:if="{{AboutHome}}" style='width:45rpx;height:42rpx;display:block;margin-left:80rpx;'></image>
+        <image src="../../image/tab_btn_sel_persona@2x.png" wx:if="{{!AboutHome}}" style='width:45rpx;height:42rpx;display:block;margin-left:80rpx;'></image>
+          <view wx:if="{{AboutHome}}" style='margin-top:-10rpx;font-family:MicrosoftYaHei;font-size:24rpx;color:rgb(173,206,251);margin-left:10rpx;'>我的</view>
+          <view wx:if="{{!AboutHome}}" style='margin-top:-10rpx;margin-left:10rpx;font-family:MicrosoftYaHei;font-size:24rpx;color:rgb(83,83,83);'>我的</view>
+      </button>
+  </view>
+  </view>
+</view>

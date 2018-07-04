@@ -1,0 +1,142 @@
+  <view style='background:#eff6fe;padding-bottom:40rpx;overflow:hidden;'>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+   <view>
+     <image class="topBanner" src="/image/register/register_banner@2x.png">
+     </image>
+     <view class="registrationTwo" style='margin-bottom:20rpx;margin-top:-20rpx;'>
+        <view class="registrationTwoInner">
+          <view class="pad10" >
+            <view >
+            <view class="header">
+             <text style='margin-top:-10rpx;'>{{attribute_list[0].attribute_name}}</text><text style="float:right;color:#e56162;">¥ {{price}}</text>
+             </view>
+             <picker mode="selector" bindchange="bindPickerChange"  
+             data-values="{{pickobj.values[index]}}"
+             value="{{index}}"               range="{{pickobj.values}}">
+           <view class="picker">
+           {{selectObj.name}}<image src="/image/brand/brand_pull-down_btn@2x.png" style="width:25rpx;height:15rpx;float:right;margin:25rpx 10rpx;"></image>
+           </view>
+         </picker>
+            </view>
+            <view class="header">{{attribute_list[1].attribute_name}}</view>
+           <button data-value="{{item.attribute_value_name}}" data-val="{{item.attribute_value_name}}" style="{{item.attribute_value_id==id?'color:#e66162;border:1px solid #e66162;width:180rpx;':'width:180rpx;'}}" bindtap="tapName" id="{{item.attribute_value_id}}" class="buttonClass" wx:for="{{attribute_list[1].attribute_value_list}}">{{item.attribute_value_name}}</button>
+         
+            <view wx:if="{{showItem}}">
+              <view class="header">{{attribute_list[2].attribute_name}}</view>
+           <button  data-val="{{item.attribute_value_name}}"  bindtap="tapNameFive" style="{{item.attribute_value_id==idFive?'color:#e66162;border:1px solid #e66162;width:180rpx;':'width:180rpx;'}}" id="{{item.attribute_value_id}}" class="buttonClass" wx:for="{{attribute_list[2].attribute_value_list}}">{{item.attribute_value_name}}</button>
+            </view>
+        </view>
+        </view>
+     </view>
+     <view class="registrationThree" wx:if="{{showItemIndexIneer}}">
+      <view class="containerWidth">
+       <view class="registrationTwoInput" style="font-size:28rpx;width:640rpx;">
+          <view class="header"><text>{{left_attribute_list[0].attribute_name}}</text><text style="float:right;color:#e56162;">¥ {{priceOne}}              </text> 
+         </view>
+         <view ><text style="color:rgba(187,187,187,1);font-size:24rpx;">公司正常营业中，需要用到各种印章</text></view>
+          <button   data-val="{{item.attribute_value_name}}"  bindtap="tapNameOne" style="{{item.attribute_value_id==idOne?'color:#e66162;border:1px solid #e66162;':''}}" class="buttonClass" id="{{item.attribute_value_id}}" 
+          wx:for="{{left_attribute_list[0].attribute_value_list}}">
+          {{item.attribute_value_name}}
+          </button>
+      </view >
+      <view class="description" style="margin-top:230rpx;">
+     <text style="color:#e46260;">注：</text>为您提供公司公章、财务章、法人私章等3种印章
+      </view>
+      </view>
+       </view>
+    </view>
+    <view class="registrationThree" wx:if="{{showItemIndexIneerTwo}}">
+     <view class="containerWidth">
+       <view class="registrationTwoInput" style="font-size:28rpx;width:640rpx;">
+          <view class="header"><text>{{left_attribute_list[0].attribute_name}}</text><text style="float:right;color:#e56162;">¥ {{priceOne}}              </text> 
+         </view>
+         <view ><text style="color:rgba(187,187,187,1);font-size:24rpx;">公司正常营业中，需要用到各种印章</text></view>
+          <button  data-val="{{item.attribute_value_name}}"  wx:if="{{item.attribute_value_name=='为我提供四章'}}"  bindtap="tapNameOne" style="{{item.attribute_value_id==idOne?'color:#e66162;border:1px solid #e66162;':''}}" class="buttonClass" id="{{item.attribute_value_id}}" 
+          wx:for="{{left_attribute_list[0].attribute_value_list}}">
+          {{item.attribute_value_name}}
+          </button>
+      </view >
+      <view class="description" style="margin-top:230rpx;">
+     <text style="color:#e46260;">注：</text>为您提供公司公章、财务章、法人私章等3种印章
+      </view>
+      </view>
+      </view>
+    <view class="registrationThree" wx:if="{{showItemIndex}}" >
+     <view class="containerWidth">
+       <view class="registrationTwoInput" style="font-size:28rpx;width:640rpx;">
+          <view class="header"><text>{{left_attribute_list[1].attribute_name}}</text><text style="float:right;color:#e56162;">¥ {{priceTwo}}              </text> 
+         </view>
+         <view><text style="color:rgba(187,187,187,1);font-size:24rpx;">一个商用的地址是注册公司的必备条件</text></view>
+         <button   data-val="{{item.attribute_value_name}}" bindtap="tapNameTwo" style="{{item.attribute_value_id==idTwo?'color:#e66162;border:1px solid #e66162;':''}}" class="buttonClass" id="{{item.attribute_value_id}}" 
+          wx:for="{{left_attribute_list[1].attribute_value_list}}">
+          {{item.attribute_value_name}}
+          </button>
+      </view>
+      <view class="description" style="margin-top:240rpx;">
+     <text style="color:#e46260;">注：</text>为您提供商用地址，确保公司顺利注册
+      </view>
+      </view>
+      </view>
+      
+      <view class="registrationThree" >
+       <view class="containerWidth">
+       <view class="registrationTwoInput" style="font-size:28rpx;width:640rpx;">
+         <view class="header">{{left_attribute_list[2].attribute_name}}<text style="float:right;color:#e56162;">¥ {{priceThree}}</text> 
+         </view>
+         <view><text style="color:rgba(187,187,187,1);font-size:24rpx;">法律规定，每个公司都需要一名具有从业资格证的会计记账报税</text></view>
+          <button  data-val="{{item.attribute_value_name}}"  bindtap="tapNameThree" style="{{item.attribute_value_id==idThree?'color:#e66162;border:1px solid #e66162;':''}}" class="buttonClass" id="{{item.attribute_value_id}}" 
+          wx:for="{{left_attribute_list[2].attribute_value_list}}">
+          {{item.attribute_value_name}}
+          </button>
+      </view>
+      <view class="description" style="margin-top:280rpx;">
+<text style="color:#e46260;">注：</text>财务官提供专业会计为您进行小规模记账报税服务
+      </view>
+      </view>
+      </view>
+<view style="height:160rpx;">
+</view>
+
+ <view class="registrationSix">
+       <view class="registrationSixInner">
+         <text class="textOne" >总费用:<text style='color:#e56162;'>¥ {{price+priceOne+priceTwo+priceThree}}</text></text>
+         <text class="textTwo">注册有风险，请再次确认填写信息无误</text>
+       </view>
+      <view class="registrationSixInnerOne">
+        <button style='border-radius:0px;float:left;width:240rpx;font-size:24rpx;border-top:1px solid #ddd;    color:#757575;height:200rpx;background:#fff;padding-top:25rpx;' open-type="contact"  bindtap="calling"><image src="{{tallImg}}" style="width:40rpx;height:40rpx;display:block;margin:0 auto;margin-top:-10rpx;margin-bottom:-10rpx;"></image>在线咨询</button>
+        <button style='border-radius:0px;border-top:1px solid #ddd;float:left;width:510rpx;font-size:32rpx;background:#509ffe;color:#fff;height:200rpx;padding-top:5rpx;padding-right:60rpx;'  bindtap="submitOne">
+        提交注册申请
+        </button>
+      </view>
+</view>
+</form>
+</view>
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModalTwo}}"></view>
+<view class="modal-dialogOne" wx:if="{{showModalTwo}}">
+<image src="/image/submit/submit_close@2x.png" style='width:30rpx;height:30rpx;position:absolute;right:30rpx;top:20rpx;'  bindtap="hideModalOne"></image>
+  <view class="modal-contentOne" style="font-size:24rpx;overflow:none;">
+       <view style='width:600rpx;'>
+         <text style="font-size:36rpx;color:#929dbb;margin-left:30rpx;">请填写您的手机号提交申请</text>
+         <view style='margin:30rpx 0rpx;position:relative;'>
+          <view >
+          <image style="width:30rpx;height:35rpx;position:absolute;top:20rpx;left:10rpx;" src="/image/submit/submit_name_icon@2x.png" >
+           </image>
+           </view>
+           <input type='text' bindinput='nameInput' value="{{name}}" placeholder='请输入您的姓名' style='width:450rpx;height:70rpx;border:1px solid #939db8;border-radius:20rpx;font-size:32rpx;padding-left:40rpx;'></input>
+         </view>
+         <view style='margin:30rpx 0rpx;position:relative;'>
+            <image style="width:25rpx;height:35rpx;position:absolute;top:20rpx;left:10rpx;" src="/image/submit/submit_phonenumber_icon@2x.png" > </image><input type='text' placeholder='请输入您的手机号' value="{{phone}}"  bindinput='phoneInput' style='width:450rpx;border:1px solid #939db8;height:70rpx;border-radius:20rpx;font-size:32rpx;padding-left:40rpx;'></input>
+         </view>
+          <view style='margin:30rpx 0rpx;position:relative;'>
+           <image style="width:30rpx;height:35rpx;position:absolute;top:20rpx;left:10rpx;" src="/image/submit/submit_verificationcode_icon@2x.png" > </image>
+         <input type='text' bindinput='codeInput'   placeholder='请输入验证码' style='width:210rpx;border:1px solid #939db8;height:70rpx;border-radius:20rpx;font-size:32rpx;padding-left:40rpx;'></input>
+           <button style='width:108px;font-size:16px;margin-top:-80rpx;margin-left:270rpx;background-color:#e9f3fd;color:#9ea8c1;' bindtap="certificationButton" disabled='{{disabled}}' >{{codeTime}}</button>
+
+         </view>
+         <view>
+         <button bindtap="modelSubmit" style='height:100rpx;color:#fff;width:330rpx;border-radius:40rpx;margin-left:60rpx;position:relative;'><image src="/image/submit/submit_btn@2x.png" style='width:310rpx;height:100rpx;'></image><text style="position:absolute;bottom:10rpx;right:75rpx;">确定提交</text></button>
+         </view>
+          <view style='color:red;margin-left:150rpx;'>{{error}}</view>
+      </view>
+  </view>
+</view>

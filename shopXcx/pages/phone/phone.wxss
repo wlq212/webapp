@@ -1,0 +1,10 @@
+/* pages/phone/phone.wxss */
+button{
+background-color: #fff;
+}
+button::after{
+  border: 0px;
+  
+  
+  background-size: 100%;
+}

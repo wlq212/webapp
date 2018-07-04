@@ -1,0 +1,58 @@
+/* pages/productName/productName.wxss */
+.producnameOne{
+  font-size:30rpx;
+  color: rgb(9,9,9);
+  font-family: PingFangSC-Semibold;
+  margin-top: 14rpx;
+}
+.productnameTwo{
+  font-size:26rpx;
+  color: rgb(103,173,255);
+  font-family:PingFangSC-Regular;
+  margin-bottom: 34rpx;
+}
+button::after{
+border: none;
+}
+.title{
+  color: rgb(83,83,83);
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  margin: 30rpx 0rpx 20rpx 30rpx;
+}
+.typeButton button{
+  display: inline-block;
+  height: 50rpx;
+  padding:0rpx;
+  width: 230rpx;
+  margin-left: 16rpx;
+  background: rgb(245,245,245);
+  border-radius: 10rpx;
+  color: rgb(174,174,174);
+  font-size: 20rpx;
+  line-height: 50rpx;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+  white-space:nowrap;
+}
+.areaButton  button{
+  display: inline-block;
+  height: 50rpx;
+  width: 155rpx;
+  margin-left: 28rpx;
+  background: rgb(245,245,245);
+  border-radius: 10rpx;
+  color: rgb(174,174,174);
+  font-size: 24rpx;
+  line-height: 50rpx;
+}
+.footer{
+  position: fixed;
+  height: 100rpx;
+  box-shadow:0 0 2px #d3e5fe;
+  width:750rpx;
+  line-height: 100rpx;
+  bottom: 0rpx;
+  background: #fff;
+}

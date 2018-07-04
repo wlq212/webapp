@@ -1,0 +1,62 @@
+<!--pages/productName/productName.wxml-->
+<!--pages/startcompany/startcompany.wxml-->
+<!--index.wxml-->  
+<view class='shequbox' style='height:1090rpx;'>
+  <swiper style='height:1090rpx;' current="{{currentTab}}" class="swiper-box" duration="300"    bindchange="bindChange">  
+    <!-- 注册公司 -->  
+    <swiper-item> 
+      <scroll-view scroll-y="true" style='height:1090rpx;'>
+      <view>
+       <view >
+       <view style='width:742rpx;margin:  0 auto;'>
+        
+           <view class="ArticleDetail" bindtap='skipArticleDetail' data-id="4001" style='position:relative;'>
+           <image src="{{orderInfo.cover_image}}"></image>
+            <view class="ArticleDetailRight">
+               <view class="ArticleTitle">
+               {{orderInfo.name}}
+               </view>
+               <view class="ArticleDescription">
+                已选分类：{{orderInfo.default_value_title}}
+               </view>
+               <view style='padding-bottom:20rpx;position:absolute;bottom:0rpx;'>
+                <text style='font-size:32rpx;color:rgb(229,97,98);font-family:PingFangSC-Semibold;'>¥{{orderInfo.price}}</text>
+                <text style='font-size:22rpx;margin-left:130rpx;color:rgb(174,174,174);font-family:PingFangSC-Regular;'>市场价：¥<text style="text-decoration:line-through;">{{orderInfo.markprice}}</text></text>
+               </view>
+            </view>
+           </view>
+           </view>
+        </view>
+      </view>
+      <view>
+   <view style='font-size:32rpx;color:rgb(83,83,83);font-family:PingFangSC-Semibold;margin-left:20rpx;margin-top:70rpx;'>尊敬的客户：</view>
+   <view style='font-family:PingFangSC-Regular;color:rgb(174,174,174);font-size:26rpx;margin-left:20rpx;margin-top:15rpx;padding-right:20rpx;'><text space="ensp">    我的财务官将秉承顾客是上帝的核心理念，高效、专业、透明、主动的为您提供服务</text></view>
+  </view>
+      </scroll-view>
+    </swiper-item>
+
+  </swiper>
+  
+</view>
+<view class="weixin">
+<view style='margin-left:30rpx;padding:16rpx 0rpx;font-family:PingFangSC-Regular;color:rgb(9,9,9);font-size:28rpx;'>选择支付方式</view>
+<view style='overflow:hidden;width:750rpx;padding:34rpx 0rpx;border-top:1px solid #e5e8ea;'>
+  <view style='float:left;'><image src="../../image/WeChat_icon@2x.png" style='width:62rpx;height:51rpx;margin-left:30rpx;margin-right:20rpx;'></image><view style='font-family:PingFangSC-Regular;color:rgb(83,83,83);font-size:24rpx;margin-top:5rpx;display:inline-block;float:right;'>微信支付（推荐）</view>
+  </view>
+  <view style='float:right;' bindtap='checkbox'>
+  <image src="../../image/cancel_nor_btn@2x.png" style='width:36rpx;height:36rpx;margin-right:20rpx;' wx:if="{{!selectcheckbox}}"></image>
+  <image src="../../image/cancel_select_btn@2x.png" style='width:36rpx;height:36rpx;margin-right:20rpx;' wx:if="{{selectcheckbox}}"></image>
+  </view>
+</view>
+</view>
+<view class="footer">
+<view>
+<view style="float:left;color:rgb(51,51,51);font-size:32rpx;padding-left:30rpx;">
+总费用：<text style='font-size:32rpx;color:rgb(229,97,98);font-family:PingFangSC-Semibold;'>¥{{orderInfo.price}}</text>
+<text style="font-size:24rpx;margin-left:20rpx; font-family:PingFangSC-Regular;color:rgb(174,174,174);text-decoration:line-through;">¥{{orderInfo.markprice}}</text>
+</view>
+<view style='float:right;'>
+<button style='display:inline-block;width:350rpx;height:100rpx;background:rgb(93,158,247);border-radius:0rpx;color:#fff;' bindtap='shutShop'>立即购买</button>
+</view>
+</view>
+</view>

@@ -1,0 +1,70 @@
+<!--pages/center/center.wxml-->
+<view style='height:1220rpx;width:750rpx;background:rgb(245,248,252);'>
+      <view style='height:30rpx;'></view>
+       <view class="commonPerson" >
+           <view class="commonPersonLeft">
+            
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>头像</view>
+           </view>
+           <view class="commonPersonRight">
+            <image style="width:40rpx;height:40rpx;margin-right:30rpx;margin-top:28rpx;border-radius:50%;" src="{{userInfo.avatarUrl}}"></image>
+           </view>
+         </view>
+         <view class="commonPerson" style='border-top:1px solid #e5e8ea;' >
+           <view class="commonPersonLeft">
+            
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>名字</view>
+           </view>
+           <view class="commonPersonRight" style="color:rgb(174,174,174);font-size:24rpx;margin-right:30rpx;margin-top:6rpx;" >
+            {{userInfo.nickName}}
+           </view>
+         </view>
+         <view style='height:20rpx;'></view>
+         <navigator url="/pages/{{phonerouter}}/{{phonerouter}}">
+         <view class="commonPerson" >
+           <view class="commonPersonLeft">
+           
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>手机号码  <text style="margin-left:100rpx;">{{phone}}</text></view>
+           </view>
+           <view class="commonPersonRight">
+           <view style="color:rgb(174,174,174);font-size:24rpx;float:left;margin-left:10rpx;padding-right:10rpx;">{{phonetext}}</view>
+            <image style="width:17rpx;height:30rpx;margin-right:30rpx;" src="../../image/persona__return1_btn@2x.png"></image>
+           </view>
+         </view>
+         </navigator>
+          <navigator url="/pages/{{weixinrouter}}/{{weixinrouter}}">
+         <view class="commonPerson" style='border-top:1px solid #e5e8ea;'>
+           <view class="commonPersonLeft">
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>微信号<text style="margin-left:100rpx;">{{weixin}}</text></view>
+           </view>
+           <view class="commonPersonRight">
+           <view style="color:rgb(174,174,174);font-size:24rpx;float:left;margin-left:10rpx;padding-right:10rpx;">{{weixinText}}</view>
+            <image style="width:17rpx;height:30rpx;margin-right:30rpx;" src="../../image/persona__return1_btn@2x.png"></image>
+           </view>
+         </view>
+         </navigator>
+         <navigator url="/pages/{{emailrouter}}/{{emailrouter}}">
+         <view class="commonPerson" style='border-top:1px solid #e5e8ea;' >
+           <view class="commonPersonLeft">
+            
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>邮箱<text style="margin-left:100rpx;">{{email}}</text></view>
+           </view>
+           <view class="commonPersonRight">
+           <view style="color:rgb(174,174,174);font-size:24rpx;float:left;margin-left:10rpx;padding-right:10rpx;">{{emailText}}</view>
+            <image style="width:17rpx;height:30rpx;margin-right:30rpx;" src="../../image/persona__return1_btn@2x.png"></image>
+           </view>
+         </view>
+         </navigator>
+         <navigator url="/pages/{{qqrouter}}/{{qqrouter}}">
+         <view class="commonPerson" style="border-top:1px solid #e5e8ea;">
+           <view class="commonPersonLeft">
+            
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>QQ号<text style="margin-left:100rpx;">{{qq}}</text></view>
+           </view>
+           <view class="commonPersonRight">
+           <view style="color:rgb(174,174,174);font-size:24rpx;float:left;margin-left:10rpx;padding-right:10rpx;">{{qqText}}</view>
+            <image style="width:17rpx;height:30rpx;margin-right:30rpx;" src="../../image/persona__return1_btn@2x.png"></image>
+           </view>
+         </view>
+        </navigator>
+</view>

@@ -1,0 +1,2 @@
+<!--pages/moreAbout/moreAbout.wxml-->
+<image src="https://lzh-images.oss-cn-shenzhen.aliyuncs.com/7db20e998dd0c8a8a524ea13b3ddca8a.png" bindload="imageLoad" style="width:{{ images.width }}rpx; height:{{ images.height }}rpx;"></image>

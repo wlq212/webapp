@@ -1,0 +1,4 @@
+<!--pages/parnter/parnter.wxml-->
+<view>
+ <image src="https://lzh-images.oss-cn-shenzhen.aliyuncs.com/71ad80a19e6e6ed5b91f9227aa4cff41.png" bindload="imageLoad" style="width:{{ images.width }}rpx; height:{{ images.height }}rpx;" ></image>
+</view>

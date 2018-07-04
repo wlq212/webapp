@@ -1,0 +1,12 @@
+<!--pages/article/article.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view>
+<view style='color:rgb(9,9,9);font-size:33rpx;font-family:PingFangSC-Semibold;padding:20rpx;'>{{articleName.article_title}}</view>
+<view class="Articletime">
+                 <text style='margin-right:20rpx;'>{{articleName.create_time}}</text><image src="../../image/home_time_icon@2x.png" style="width:24rpx;height:24rpx;margin-right:20rpx;margin-bottom:-4rpx;"></image>
+                 <text style='margin-right:20rpx;'>{{articleName.visit_number}}</text><image src="../../image/home_read_iocn@2x.png" style='width:24rpx;height:24rpx;margin-bottom:-4rpx;'></image>
+               </view>
+</view>
+<view style="padding:20rpx;color:rgb(83,83,83) !important;font-size:24rpx !important;">
+ <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>

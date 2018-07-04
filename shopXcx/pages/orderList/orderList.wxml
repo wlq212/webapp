@@ -1,0 +1,80 @@
+<!--pages/startcompany/startcompany.wxml-->
+<!--index.wxml-->  
+<scroll-view  class="coupons-scroll" scroll-x="true">
+<view class="swiper-tab" >  
+    <view  class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" data-typeCode="{{item.type_code}}" bindtap="swichNav" >待付款  <view wx:if="{{currentTab==0}}" style='height:5rpx;background:rgb(53,145,255);width:70rpx;margin:0 auto;'></view></view>  
+
+     <view  class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav" >已付款<view wx:if="{{currentTab==1}}" style='height:5rpx;background:rgb(53,145,255);width:70rpx;margin:0 auto;'></view></view>  
+</view> 
+</scroll-view>
+<view class='shequbox' style='height:{{srollheight}}pxbox-shadow:0 0 10rpx #d3e5fe;'>
+  <swiper style='height:{{srollheight}}px' current="{{currentTab}}" class="swiper-box" duration="300"    bindchange="bindChange">  
+    <!-- 未付款 -->  
+    <swiper-item > 
+      <scroll-view bindscrolltolower="setLoading" scroll-y="true" style='height:{{srollheight}}px' class="weifukuan">
+      <view>
+       <view>
+       <view style='width:742rpx;margin:  0 auto;'>
+           <view wx:for="{{noPayList}}"  class="ArticleDetail" bindtap='skipArticleDetail' data-id="{{item.order_id}}">
+           <image src="{{item.product_list[0].cover_img}}"></image>
+            <view class="ArticleDetailRight" bindtap='shutShop' data-id="{{index}}" >
+               <view class="ArticleTitle">
+               {{item.product_list[0].product_name}}
+               </view>
+               <view class="ArticleDescription" style="margin-bottom:80rpx;">
+               {{item.product_list[0].product_attr}}
+               
+               </view>
+               <view class="Articletime"  >
+                  <text style="color:rgb(229,97,98);font-family:PingFangSC-Semibold;font-size:32rpx;float:left;">¥{{item.price}}</text>
+                  <text style="color:rgb(229,97,98);font-family:PingFangSC-Regular;font-size:24rpx;float:right;item.price;margin-top:6rpx;">立即付款</text>
+                  
+               </view>
+              
+               
+            </view>
+           </view>
+           </view>
+        </view>
+      </view>
+       <view class="button-wrapper"> 
+ <button type="default" size="default" loading="{{loading}}" disabled="{{disabled}}" bindtap="setLoading" style=' color: rgb(83,83,83);font-size:26rpx;font-family:PingFangSC-Regular;'> 
+ {{loadText}} 
+ </button> 
+</view> 
+      </scroll-view>
+       
+    </swiper-item>
+    <swiper-item > 
+      <scroll-view bindscrolltolower="setLoading1" scroll-y="true" style='height:{{srollheight}}px' style='yifukuan'>
+      <view>
+       <view >
+       <view style='width:742rpx;margin:  0 auto;'>
+           <view wx:for="{{payList}}" class="ArticleDetail" bindtap='skipArticleDetail' data-id="{{item.order_id}}">
+           <image src="{{item.product_list[0].cover_img}}"></image>
+            <view class="ArticleDetailRight">
+               <view class="ArticleTitle">
+               {{item.product_list[0].product_name}}
+               </view>
+               <view class="ArticleDescription" style="margin-bottom:80rpx;">
+               {{item.product_list[0].product_attr}}
+               </view>
+              <view class="Articletime" >
+                  <text style="color:rgb(229,97,98);font-family:PingFangSC-Semibold;font-size:32rpx;float:left;">¥{{item.price}}</text>
+                  <text style="color:rgb(173,206,251);font-family:PingFangSC-Regular;font-size:24rpx;float:right;margin-top:5rpx;">{{item.order_time}}</text>
+               </view>
+            </view>
+           </view>
+           </view>
+        </view>
+      </view>
+       <view class="button-wrapper"> 
+ <button type="default" size="default" loading="{{loading}}" disabled="{{disabled}}" bindtap="setLoading1" style=' color: rgb(83,83,83);font-size:26rpx;font-family:PingFangSC-Regular;'> 
+ {{loadText1}} 
+ </button> 
+</view> 
+      </scroll-view>
+       
+    </swiper-item>
+  </swiper>
+</view>

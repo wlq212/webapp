@@ -1,0 +1,39 @@
+<!--pages/connact/connact.wxml-->
+<view>
+ <view style='background:rgb(245,248,252)' style='padding-bottom:20rpx;'>
+   <image src="../../image/home_banner1@2x.png" style="width:750rpx;height:364rpx;"></image>
+  <view class="map_container" > 
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="18" show-location="true" bindtap='skipMap' markers="{{markers}}" bindmarkertap="makertap"></map> 
+</view> 
+  </view>
+  <view class="commonPerson" >
+           <view class="commonPersonLeft">
+            
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>公众号</view>
+           </view>
+           <view class="commonPersonRight" style="color: rgb(83,83,83);font-size:26rpx;font-family:PingFangSC-Regular;margin-top:5rpx;margin-right:20rpx;">
+             我的财务官
+           </view>
+           
+         </view>
+         <view class="commonPerson" style='border-top:1px solid #e5e8ea;'>
+           <view class="commonPersonLeft">
+            
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>微信号</view>
+           </view>
+           <view class="commonPersonRight" style="color: rgb(83,83,83);font-size:26rpx;font-family:PingFangSC-Regular;margin-top:5rpx;margin-right:20rpx;">
+              <text selectable='true'>cwg13827419019</text>
+           </view>
+           
+         </view>
+         <view class="commonPerson"  style='border-bottom:1px solid #e5e8ea;border-top:1px solid #e5e8ea;'>
+           <view class="commonPersonLeft">
+           
+            <view style='float:right;margin-top:5rpx;margin-left:20rpx;'>电话</view>
+           </view>
+           <view bindtap='call' class="commonPersonRight" style='padding-right:20rpx;'>
+            <text style='font-size:26rpx;color:rgba(53,145,255,0.87)'>18189699879</text>
+           </view>
+         </view>
+<view style='position:absolute;bottom:20rpx;text-align:center;width:750rpx;color: rgb(83,83,83);font-size:26rpx;font-family:PingFangSC-Regular;'>我的财务科技（深圳）有限公司</view>
+</view>

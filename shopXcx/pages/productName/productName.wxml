@@ -1,0 +1,83 @@
+<!--pages/productName/productName.wxml-->
+<view style='margin-bottom:80rpx;'>
+  <view>
+      <image src="{{get_product_detail.cover_image}}" style='width:750rpx;height:510rpx;'></image>
+  </view>
+  <view style='text-align:center;'>
+    <view class='producnameOne'>{{get_product_detail.name}}</view>
+    <view class="productnameTwo">{{get_product_detail.sku_desc}}</view>
+  </view>
+  <view stylse='width:750rpx;height:10rpx;background:rgb(241,247,255)'>
+  </view>
+  <view >
+  <view class="title" >
+  {{get_product_detail.attribute_list[0].attribute_name}}
+  </view>
+  <view class="typeButton">
+   <button bindtap='typeButton0' data-index="{{index}}" style="{{itemName.value_id==id?'color:#fff;background:rgb(93,158,247);':''}}" id="{{itemName.value_id}}" wx:for-item="itemName" wx:for="{{get_product_detail.attribute_list[0].attribute_values}}">{{itemName.value_title}}</button>
+  </view>
+  <view class="title" >
+  {{get_product_detail.attribute_list[1].attribute_name}}
+  </view>
+  <view class="typeButton">
+   <button bindtap='typeButton1' data-index="{{index}}" style="{{itemName.value_id==id1?'color:#fff;background:rgb(93,158,247);':''}}" id="{{itemName.value_id}}" wx:for-item="itemName" wx:for="{{get_product_detail.attribute_list[1].attribute_values}}">{{itemName.value_title}}</button>
+  </view>
+   <view class="title" >
+  {{get_product_detail.attribute_list[2].attribute_name}}
+  </view>
+  <view class="typeButton">
+   <button bindtap='typeButton2' data-index="{{index}}" style="{{itemName.value_id==id2?'color:#fff;background:rgb(93,158,247);':''}}" id="{{itemName.value_id}}" wx:for-item="itemName" wx:for="{{get_product_detail.attribute_list[2].attribute_values}}">{{itemName.value_title}}</button>
+  </view>
+  <view class="title" >
+  {{get_product_detail.attribute_list[3].attribute_name}}
+  </view>
+  <view class="typeButton">
+   <button bindtap='typeButton3' data-index="{{index}}" style="{{itemName.value_id==id3?'color:#fff;background:rgb(93,158,247);':''}}" id="{{itemName.value_id}}" wx:for-item="itemName" wx:for="{{get_product_detail.attribute_list[3].attribute_values}}">{{itemName.value_title}}</button>
+   </view>
+   <view class="title" >
+  {{get_product_detail.attribute_list[4].attribute_name}}
+  </view>
+  <view class="typeButton">
+   <button bindtap='typeButton4' data-index="{{index}}" style="{{itemName.value_id==id4?'color:#fff;background:rgb(93,158,247);':''}}" id="{{itemName.value_id}}" wx:for-item="itemName" wx:for="{{get_product_detail.attribute_list[4].attribute_values}}">{{itemName.value_title}}</button>
+  </view>
+   <view class="title" >
+  {{get_product_detail.attribute_list[5].attribute_name}}
+  </view>
+  <view class="typeButton">
+   <button bindtap='typeButton5' data-index="{{index}}" style="{{itemName.value_id==id5?'color:#fff;background:rgb(93,158,247);':''}}" id="{{itemName.value_id}}" wx:for-item="itemName" wx:for="{{get_product_detail.attribute_list[5].attribute_values}}">{{itemName.value_title}}</button>
+  </view>
+   <view class="title" >
+  {{get_product_detail.attribute_list[6].attribute_name}}
+  </view>
+  <view class="typeButton">
+   <button bindtap='typeButton6' data-index="{{index}}" style="{{itemName.value_id==id6?'color:#fff;background:rgb(93,158,247);':''}}" id="{{itemName.value_id}}" wx:for-item="itemName" wx:for="{{get_product_detail.attribute_list[6].attribute_values}}">{{itemName.value_title}}</button>
+  </view>
+   <view class="title" >
+  {{get_product_detail.attribute_list[7].attribute_name}}
+  </view>
+  <view class="typeButton">
+   <button bindtap='typeButton7' data-index="{{index}}" style="{{itemName.value_id==id7?'color:#fff;background:rgb(93,158,247);':''}}" id="{{itemName.value_id}}" wx:for-item="itemName" wx:for="{{get_product_detail.attribute_list[7].attribute_values}}">{{itemName.value_title}}</button>
+  </view>
+   <view class="title" >
+  {{get_product_detail.attribute_list[8].attribute_name}}
+  </view>
+  <view class="typeButton">
+   <button bindtap='typeButton8' data-index="{{index}}" style="{{itemName.value_id==id8?'color:#fff;background:rgb(93,158,247);':''}}" id="{{itemName.value_id}}" wx:for-item="itemName" wx:for="{{get_product_detail.attribute_list[8].attribute_values}}">{{itemName.value_title}}</button>
+  </view>
+  </view>
+  <view style="margin-top:50rpx;">
+  <view class="title">商品详情图</view><view style='float:right;width:580rpx;height:10rpx;background:rgb(241,247,255);margin-top:-45rpx;'></view>
+  </view>
+  <image src="{{get_product_detail.detail_image}}" bindload="imageLoad" style="width:{{ images.width }}rpx; height:{{ images.height }}rpx;" ></image>
+</view>
+<button wx:if="{{bollonee}}" open-type="contact" style='position:fixed;right:0rpx;bottom:150rpx;background-color:rgba(255,255,255,0);'><image style="width:72rpx;height:72rpx;"src="https://lzh-images.oss-cn-shenzhen.aliyuncs.com/e549fea1b159aa8a23c7d559d81465b9.png"></image></button>
+<button wx:if="{{!bollonee}}" bindtap='aboutTime' style='position:fixed;right:0rpx;bottom:150rpx;background-color:rgba(255,255,255,0);'><image style="width:72rpx;height:72rpx;"src="https://lzh-images.oss-cn-shenzhen.aliyuncs.com/e549fea1b159aa8a23c7d559d81465b9.png"></image></button>
+<view class="footer">
+<view style="float:left;color:rgb(51,51,51);font-size:32rpx;padding-left:30rpx;">
+总费用：<text style='font-size:32rpx;color:rgb(229,97,98);font-family:PingFangSC-Semibold;'>¥{{get_product_detail.sku_price}}</text>
+<text style="font-size:24rpx;margin-left:20rpx; font-family:PingFangSC-Regular;color:rgb(174,174,174);text-decoration:line-through;">¥{{get_product_detail.market_value}}</text>
+</view>
+<view style='float:right;'>
+<button data-id="{{get_product_detail.sku_id}}" bindtap="skipOrder" style='display:inline-block;width:350rpx;height:100rpx;background:rgb(93,158,247);border-radius:0rpx;color:#fff;'>立即购买</button>
+</view>
+</view>

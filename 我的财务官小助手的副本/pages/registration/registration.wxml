@@ -1,0 +1,150 @@
+  <view style='background:#eff6fe;padding-bottom:220rpx;overflow:hidden;'>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+<view>
+    <image class="topBanner" src="/image/brand/brand_banner@2x.png">
+    </image>
+  
+    <view class="registrationTwo">
+      <view class="registrationTwoInput">
+          <view style="float:left;margin-left:-10rpx;"><text style='font-size:32rpx;'>商标名称：</text></view>
+          <input type="text" class="inputClass" bindinput="bindKeyInput" placeholder="请输入要注册的商标名"/>
+      </view>
+      <view class="description">
+       <text style="color:#e46260;">注：</text>请谨慎填写商标名称，使用未被注册的商标名称
+      </view>
+    </view>
+    <view class="registrationThree">
+       <view class="registrationTwoInput">
+          <picker mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{industry_listes}}" >
+           <text style="margin-left:-10rpx;">选择行业：</text>
+           <view class="picker">
+           {{industray_name}}<image src="/image/brand/brand_pull-down_btn@2x.png" style="width:25rpx;height:15rpx;float:right;margin:15rpx 10rpx;"></image>
+           </view>
+  </picker>
+  </view>
+      <view class="description">
+       <text style="color:#e46260;">注：</text>财务官根据您的行业，为您选择最合适的商标类别选择方案
+      </view>
+    </view>
+    <view class="registrationFour" wx:if="{{industray_name!='请选择行业'}}">
+      <view class="registrationFourInner">
+      <view style="margin-top:30rpx;">
+       <view class="header"><text>选择注册类别</text><text style="float:right;color:#e56162;">¥ {{type_price}}</text></view>
+        <view style="margin-top:10rpx;margin-left:10rpx;">
+          <view style="margin-bottom:30rpx;">
+          <text>核心类别：</text>
+          </view>
+          <checkbox-group class="group" bindchange="radioChange">
+          <view class="label-2" wx:for="{{core_type_list}}">
+            <checkbox   id="{{item}}"  value="{{item}}" checked="{{core_type_listchecked}}"></checkbox>
+            <label  class="label-2__text" for="{{item}}"><text>{{item}}</text></label>
+          </view>
+        </checkbox-group>
+        </view>
+        <view style="margin-top:40rpx;">
+          <view style="margin-bottom:30rpx;margin-left:10rpx;">
+           <text>关联类别：</text>
+           </view>
+        <checkbox-group class="group" bindchange="radioChangeGl">
+  <view class="label-2" wx:for="{{relate_type_list}}">
+    <checkbox id="{{item}}"  value="{{item}}" checked="{{relate_type_listchecked}}"></checkbox>
+    <label class="label-2__text" for="{{item}}"><text>{{item}}</text></label>
+  </view>
+</checkbox-group>
+        </view>
+          <view style="margin-top:40rpx;">
+            <view style="margin-bottom:30rpx;margin-left:10rpx;">
+            <text>其他类别：</text>
+          
+    <text  bindtap="showDialogBtn" style="float:right;margin-top:-38rpx;">
+     选择更多
+    </text>
+            </view>
+            <checkbox-group class="group" bindchange="radioChangeOtherll">
+            <view class="label-2" wx:for="{{slectother_type_list}}">
+              <checkbox   id="{{item.name}}"  value="{{item.name}}" checked="true"></checkbox>
+              <label  class="label-2__text" for="{{item}}"><text>{{item.name}}</text></label>
+            </view>
+          </checkbox-group>
+          </view>
+        </view>
+       </view>
+    </view>
+</view>
+     <view class="registrationFive">
+      <view class="registrationFiveInner" style="margin-top:20rpx;">
+        <view class="header">
+        <text>选择注册类别</text><text style="float:right;color:#e56162;">¥ {{price}}</text> </view>
+         <view>
+         <button class="buttonClass" id="{{index}}" data-val="{{item.design_name}}" style="{{index==id?'color:#e66162;border:1px solid #e66162;':''}}" bindtap="tapName" data-price="{{item.price}}"  wx:for="{{design_list}}" 
+         isfress="{{is_free}}">{{item.design_name}}</button> 
+         <view class="description" style='margin-top:-10rpx;'>
+         <text style="color:#e46260;">注：</text>普通设计方案为您提供三种不同商标设计，可修复改一次
+      </view>  
+         </view>     
+      </view>
+    </view>
+<view class="registrationSix">
+       <view class="registrationSixInner">
+         <text class="textOne" >总费用:<text style='color:#e56162;'>¥ {{total}}</text></text>
+         <text class="textTwo">注册有风险，请再次确认填写信息无误</text>
+       </view>
+      <view class="registrationSixInnerOne">
+        <button style='border-radius:0px;float:left;width:240rpx;border-top:1px solid #ddd;font-size:24rpx;    color:#757575;height:200rpx;background:#fff;padding-top:25rpx;' open-type="contact"  bindtap="calling"><image src="{{tallImg}}" style="width:40rpx;height:40rpx;display:block;margin:0 auto;margin-top:-10rpx;margin-bottom:-10rpx;"></image>在线咨询</button>
+        <button style='border-radius:0px;border-top:1px solid #ddd;float:left;width:510rpx;font-size:32rpx;background:#509ffe;color:#fff;height:200rpx;padding-top:5rpx;padding-right:60rpx;'  bindtap="submitOne">
+        提交注册申请
+        </button>
+      </view>
+</view>
+</form>
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}" style='height:600rpx;margin:-280rpx 105rpx;'>
+  <view class="modal-header" style='text-align:center;font-size:28rpx;padding:20rpx;border-bottom:1px solid #ddd;'>
+  <text>请选择类型</text>
+  </view>
+  <view class="modal-content" style="overflow:scroll;font-size:24rpx;padding:0rpx;height:390rpx;padding-top:30rpx;">
+
+         <checkbox-group class="group" bindchange="radioChangeOtherll" style="font-size:28rpx;">
+            <view class="label-2" wx:for="{{other_type_list}}" style='padding:0rpx 0;border:1px solid #f0f0f0;border-left:0rpx;border-right:0rpx;border-top:0rpx;padding-bottom:10rpx;margin-top:-15rpx;padding-left:32rpx;'>
+              <checkbox   id="{{item.name}}"  value="{{item.name}}" 
+              checked="{{item.checked}}"></checkbox>
+              <label  class="label-2__text" style="margin-left:30rpx;"><text>{{item.name}}</text></label>
+            </view>
+          </checkbox-group>
+  </view>
+  <view class="modal-footer" style="height:79rpx;line-height:79rpx;margin-top:10rpx">
+    <view class="btn-cancel" style='color:#7e9cda;' bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+  </view>
+</view>
+
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModalTwo}}"></view>
+<view class="modal-dialogOne" wx:if="{{showModalTwo}}">
+<image src="/image/submit/submit_close@2x.png" style='width:30rpx;height:30rpx;position:absolute;right:30rpx;top:20rpx;'  bindtap="hideModalOne"></image>
+  <view class="modal-contentOne" style="font-size:24rpx;overflow:none;">
+       <view style='width:600rpx;'>
+         <text style="font-size:36rpx;color:#929dbb;margin-left:30rpx;">请填写您的手机号提交申请</text>
+         <view style='margin:30rpx 0rpx;position:relative;'>
+          <view >
+          <image style="width:30rpx;height:35rpx;position:absolute;top:20rpx;left:10rpx;" src="/image/submit/submit_name_icon@2x.png" >
+           </image>
+           </view>
+           <input type='text' bindinput='nameInput'value="{{name}}"  placeholder='请输入您的姓名' style='width:450rpx;height:70rpx;border:1px solid #939db8;border-radius:20rpx;font-size:32rpx;padding-left:40rpx;'></input>
+         </view>
+         <view style='margin:30rpx 0rpx;position:relative;'>
+            <image style="width:25rpx;height:35rpx;position:absolute;top:20rpx;left:10rpx;" src="/image/submit/submit_phonenumber_icon@2x.png" > </image><input type='text' placeholder='请输入您的手机号' bindinput='phoneInput'value="{{phone}}" style='width:450rpx;border:1px solid #939db8;height:70rpx;border-radius:20rpx;font-size:32rpx;padding-left:40rpx;'></input>
+         </view>
+          <view style='margin:30rpx 0rpx;position:relative;'>
+           <image style="width:30rpx;height:35rpx;position:absolute;top:20rpx;left:10rpx;" src="/image/submit/submit_verificationcode_icon@2x.png" > </image>
+         <input type='text'  bindinput='codeInput' placeholder='请输入验证码' style='width:210rpx;border:1px solid #939db8;height:70rpx;border-radius:20rpx;font-size:32rpx;padding-left:40rpx;'></input>
+           <button disabled='{{disabled}}' style='width:108px;font-size:16px;margin-top:-80rpx;margin-left:270rpx;background-color:#e9f3fd;color:#9ea8c1;' bindtap="certificationButton" >{{codeTime}}</button>
+
+         </view>
+         <view>
+         <button bindtap="modelSubmit" style='height:100rpx;color:#fff;width:330rpx;border-radius:40rpx;margin-left:60rpx;position:relative;'><image src="/image/submit/submit_btn@2x.png" style='width:310rpx;height:100rpx;'></image><text style="position:absolute;bottom:10rpx;right:75rpx;">确定提交</text></button>
+         </view>
+          <view style='color:red;margin-left:150rpx;'>{{error}}</view>
+      </view>
+  </view>
+</view>

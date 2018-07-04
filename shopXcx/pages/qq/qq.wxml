@@ -1,0 +1,13 @@
+<!--pages/phone/phone.wxml-->
+<view style='height:1334rpx;width:750rpx;background:rgb(245,248,252)'>
+<view style='height:20rpx;'>
+</view>
+  <view>
+  <input type='text' style='background:#fff;height:86rpx;padding-left:30rpx;color:rgb(174,174,174);font-size:24rpx;' bindinput="getInput"  placeholder='请输入您的qq号' value="{{qq}}"></input>
+  </view>
+  <view style='color:red;width:750rpx;text-align:center;'>{{error}}</view>
+  <button bindtap='modelSubmit' style="width:750rpx;background:rgb(73,146,247);color:#fff; border-radius:0rpx;font-size:32rpx;margin-top:80rpx;">确定</button>
+ 
+  
+</view>
+ 

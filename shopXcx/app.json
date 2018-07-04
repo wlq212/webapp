@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/article/article",
+    "pages/moreService/moreService",
+    "pages/moreArticle/moreArticle",
+    "pages/moreAbout/moreAbout",
+    "pages/articleDetail/articleDetail",
+    "pages/productName/productName",
+    "pages/center/center",
+    "pages/order/order",
+    "pages/connact/connact",
+    "pages/orderList/orderList",
+    "pages/phone/phone",
+    "pages/change_phone/change_phone",
+    "pages/qq/qq",
+    "pages/email/email",
+    "pages/weixin/weixin",
+    "pages/parnter/parnter",
+    "pages/timeAbout/timeAbout"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

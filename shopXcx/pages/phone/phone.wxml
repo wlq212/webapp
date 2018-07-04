@@ -1,0 +1,18 @@
+<!--pages/phone/phone.wxml-->
+<view style='height:1334rpx;width:750rpx;background:rgb(245,248,252)'>
+<view style='height:20rpx;'>
+</view>
+  <view>
+  <input type='text' style='background:#fff;height:86rpx;padding-left:30rpx;color:rgb(174,174,174);font-size:24rpx;' bindinput="getInput"  placeholder='请输入您的手机号' value="{{phone}}"></input>
+  </view>
+  <view style='background:#fff;height:86rpx;line-height:86rpx;border-top:1px solid #e5e8ea;'>
+  <input type='text' style='display:inline-block;background:#fff;width:400rpx;height:86rpx;padding-left:30rpx;color:rgb(174,174,174);font-size:24rpx;' placeholder='请输入验证码' value="{{code}}" bindinput="getCode"></input>
+  <view style="font-size:28rpx;color:rgb(53,145,255);margin-bottom:20rpx; float:right;padding-right:30rpx;" ><button disabled="{{disabled}}"  bindtap="certificationButton" style='font-size:28rpx;color:rgb(53,145,255);;background:#fff;border:0px;margin-top:10rpx;'>| {{codeTime}}</button></view>
+  </view>
+  
+  <view style='color:red;width:750rpx;text-align:center;'>{{error}}</view>
+  <button bindtap='modelSubmit' style="width:750rpx;background:rgb(73,146,247);color:#fff; border-radius:0rpx;font-size:32rpx;margin-top:80rpx;">确定</button>
+ 
+  
+</view>
+ 

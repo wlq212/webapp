@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/registration/registration",
+    "pages/IndustrialChange/IndustrialChange",
+    "pages/accountTax/accountTax",
+    "pages/companyRegistration/companyRegistration",
+    "pages/xgregister/xgregister",
+    "pages/companyRegister/companyRegister"
+  ],
+  "component": true,
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

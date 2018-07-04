@@ -1,0 +1,10 @@
+/* pages/article/article.wxss */
+@import "/wxParse/wxParse.wxss";
+.Articletime{
+ font-size:20rpx;
+  color:rgb(174,174,174);
+  font-family:PingFangSC-Regular; 
+  text-align: left;
+  margin-left:20rpx;
+  margin-top:10rpx;
+}

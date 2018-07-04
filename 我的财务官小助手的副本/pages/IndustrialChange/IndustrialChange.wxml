@@ -1,0 +1,146 @@
+<view style='background:#eff6fe;padding-bottom:40rpx;overflow:hidden;'>
+ <form bindsubmit="formSubmit" bindreset="formReset">
+     <image class="topBanner" src="/image/alteration/alteration_banner@2x.png">
+     </image>
+     <view class="registrationTwo"  style="margin-top:-20rpx;">
+        <view class="registrationTwoInner">
+          <view class="pad10" >
+              <view class="header">
+              {{arrOneTitle}}<text style="float:right;color:#e46260;">¥ {{atrPrice}}                       </text>
+              </view>
+              <button data-val="{{itemName.attribute_value_name}}" style="{{itemName.attribute_value_id==id?'color:#e66162;border:1px solid #e66162;':''}}" class="buttonClass"  id="{{itemName.attribute_value_id}}"   bindtap="tapNameAttr"  wx:for="{{arrOne}}" wx:for-item="itemName" wx:key="itemName.attribute_value_id" >
+              {{itemName.attribute_value_name}}
+           </button>
+            <view class="header" style='color:#757575;'>
+             {{arrTwoTitle}}<text style='font-size:24rpx;color:rgba(184,184,184,1)'>（可同时变更多项)</text>
+            </view>
+          <checkbox-group  class="group" bindchange="radioChange" style="padding-top:20rpx;">
+            <view class="label-2" wx:for="{{arrTwo}}"   wx:if="{{item.attribute_value_name!='增资变更'&&item.attribute_value_name!='减资变更'}}" >
+              <checkbox   id="{{item.attribute_value_id}}"  value="{{item.attribute_value_id}}" checked="{{core_type_listchecked}}"></checkbox>
+              <label  class="label-2__text" for="{{item.attribute_value_id}}"><text>{{item.attribute_value_name}}</text></label>
+            </view>
+          </checkbox-group>
+            <button data-val="{{itemName.attribute_value_name}}" style="{{itemName.attribute_value_id==idone?'color:#e66162;border:1px solid #e66162;':''}}" class="buttonClass"  data-idOne="{{itemName.attribute_value_id}}"  bindtap="tapNameAttrOne"  wx:for="{{arrTwo}}" wx:for-item="itemName" wx:key="itemName.attribute_value_id" wx:if="{{itemName.attribute_value_name=='增资变更'||itemName.attribute_value_name=='减资变更'}}">
+              {{itemName.attribute_value_name}}
+           </button>
+            <view class="description" style="margin-top:20rpx;">
+       <text style="color:#e46260;">注：</text> 如需同时变更多项，可一起申请变更，服务更优惠
+            </view>
+        </view>
+      </view>
+     </view>
+
+    <view class="registrationThree"  wx:if="{{showItemTwoHH}}">
+       <view class="registrationTwoInput" style="font-size:28rpx;">
+           <view class="header">
+            <text>{{attribute_value_list.attribute_name}}</text>
+            <text style="float:right;color:#e56162;">¥ {{priceFour}}</text>
+           </view>
+          <button data-val="{{item.attribute_value_name}}" style="{{index==idOne?'color:#e66162;border:1px solid #e66162;':''}}" wx:if="{{item.attribute_value_name=='公章'||item. attribute_value_name=='财务章'||item.attribute_value_name=='我自己刻章'}}" id="{{index}}"  bindtap="tapNameOne" wx:for="{{attribute_value_list.attribute_value_list}}" class="buttonClass" data-price="{{item.attribute_value_price}}">{{item. attribute_value_name}}</button>
+          <view class="description" >
+         <text style="color:#e56162;">注：</text>当公司名称或法人变更时，需重刻印章
+        </view>
+        </view>
+        
+    </view>
+  
+
+    <view class="registrationThree"  wx:if="{{showItemTwoTwo}}">
+        <view class="registrationTwoInput" style="font-size:28rpx;">
+           <view class="header">
+              <text>{{attribute_value_list.attribute_name}}</text>
+              <text style="float:right;color:#e56162;">¥ {{priceFour}}</text>
+           </view>
+          <button data-val="{{item.attribute_value_name}}" style="{{index==idOne?'color:#e66162;border:1px solid #e66162;':''}}"  wx:if="{{item. attribute_value_name=='法人私章'||item.attribute_value_name=='我自己刻章'}}" id="{{index}}"  bindtap="tapNameOne" wx:for="{{attribute_value_list.attribute_value_list}}" class="buttonClass" data-price="{{item.attribute_value_price}}">{{item. attribute_value_name}}
+          </button>
+           <view class="description" >
+        <text style="color:#e56162;">注：</text>当公司名称或法人变更时，需重刻印章
+        </view>
+        </view>
+       
+    </view>
+
+  <view class="registrationThree"  wx:if="{{showItemTwoHHOne}}">
+        <view class="registrationTwoInput" style="font-size:28rpx;">
+           <view class="header">
+            <text>{{attribute_value_list.attribute_name}}</text>
+            <text   style="float:right;color:#e56162;">¥ {{priceFour}}</text>
+           </view>
+          <button  data-val="{{item.attribute_value_name}}" id="{{index}}" style="{{index==idOne?'color:#e66162;border:1px solid #e66162;':''}}"  bindtap="tapNameOne" wx:for="{{attribute_value_list.attribute_value_list}}" class="buttonClass" data-price="{{item.attribute_value_price}}">{{item. attribute_value_name}}
+          </button>
+           <view class="description" >
+          <text style="color:#e56162;">注：</text> 当公司名称或法人变更时，需重刻印章
+        </view>
+        </view>
+       
+    </view>
+
+  <view class="registrationThree"  wx:if="{{showItemOne}}" style='margin-top:20rpx;'>
+         <view  class="registrationFiveInner"  >
+           <view class="header" style='margin-bottom:-30rpx;'> 
+            <text>{{attribute_value_listOne.attribute_name}}
+            </text>
+            <text style="float:right;color:#e56162;margin-top:-40rpx;">¥ {{priceThree}}</text>
+            </view> 
+           <button data-val="{{item.attribute_value_name}}"  id="{{index}}"  style="{{index==idTwo?'color:#e66162;border:1px solid #e66162;width:330rpx;':'width:330rpx;'}}" bindtap="tapNameTwo"  wx:for="{{attribute_value_listOne. attribute_value_list}}" data-price="{{item.attribute_value_price}}" class="buttonClass" >{{item.attribute_value_name}}</button>
+         <view class="description" >
+            <text style="color:#e46260;">注：</text>公司名称，法人，地址变更后，需及时变更银行开户信息
+         </view> 
+         </view>
+  </view> 
+  <view class="registrationFive" wx:if="{{registrationFiveShow}}" style='margin-top:20rpx;'>
+        <view  class="registrationFiveInner" style="font-size:28rpx;padding-top:20rpx;">
+         <view class="header">
+            <text>{{attribute_value_listTwo.attribute_name}}</text>
+            <text style="float:right;color:#e56162;">¥ {{priceTwo}}              </text> 
+         </view>
+         <button id="{{index}}" data-val="{{item.attribute_value_name}}"  style="{{index==idThree?'color:#e66162;border:1px solid #e66162;':''}}"  bindtap="tapNameThree"  wx:for="{{attribute_value_listTwo.attribute_value_list}}" data-price="{{item.attribute_value_price}}" class="buttonClass" >{{item.attribute_value_name}}</button>
+         <view class="description" style="">
+           <text style="color:#e46260;">注：</text>公司名称，地址变更后，需及时变更商标信息
+         </view> 
+        </view>
+  </view>
+  <view class="registrationSix">
+       <view class="registrationSixInner">
+         <text class="textOne" >总费用:<text style='color:#e56162;'>¥ {{priceTwo+price+atrPrice+priceFour+priceFive+priceThree+priceOne}}</text></text>
+         <text class="textTwo">注册有风险，请再次确认填写信息无误</text>
+       </view>
+      <view class="registrationSixInnerOne">
+        <button style='border-radius:0px;float:left;width:240rpx;font-size:24rpx;border-top:1px solid #ddd;    color:#757575;height:200rpx;background:#fff;padding-top:25rpx;' open-type="contact"  bindtap="calling"><image src="{{tallImg}}" style="width:40rpx;height:40rpx;display:block;margin:0 auto;margin-top:-10rpx;margin-bottom:-10rpx;"></image>在线咨询</button>
+        <button style='border-radius:0px;float:left;width:510rpx;font-size:32rpx;background:#509ffe;color:#fff;border-top:1px solid #ddd;height:200rpx;padding-top:5rpx;padding-right:60rpx;'  bindtap="submitOne">
+           提交注册申请
+        </button>
+      </view>
+</view>
+</form>
+</view>
+<view style="height:180rpx;">
+</view>
+<view class="modal-mask" catchtouchmove="preventTouchMove" wx:if="{{showModalTwo}}"></view>
+<view class="modal-dialogOne" wx:if="{{showModalTwo}}">
+<image src="/image/submit/submit_close@2x.png" style='width:30rpx;height:30rpx;position:absolute;right:30rpx;top:20rpx;'  bindtap="hideModalOne"></image>
+  <view class="modal-contentOne" style="font-size:24rpx;overflow:none;">
+       <view style='width:600rpx;'>
+         <text style="font-size:36rpx;color:#929dbb;margin-left:30rpx;">请填写您的手机号提交申请</text>
+         <view style='margin:30rpx 0rpx;position:relative;'>
+          <view >
+          <image style="width:30rpx;height:35rpx;position:absolute;top:20rpx;left:10rpx;" src="/image/submit/submit_name_icon@2x.png" >
+           </image>
+           </view>
+           <input  bindinput='nameInput' type='text'  value="{{name}}" placeholder='请输入您的姓名' style='width:450rpx;height:70rpx;border:1px solid #939db8;border-radius:20rpx;font-size:32rpx;padding-left:40rpx;'></input>
+         </view>
+         <view style='margin:30rpx 0rpx;position:relative;'>
+            <image style="width:25rpx;height:35rpx;position:absolute;top:20rpx;left:10rpx;" src="/image/submit/submit_phonenumber_icon@2x.png" > </image><input type='text' bindinput='phoneInput' placeholder='请输入您的手机号' value="{{phone}}" style='width:450rpx;border:1px solid #939db8;height:70rpx;border-radius:20rpx;font-size:32rpx;padding-left:40rpx;'></input>
+         </view>
+          <view style='margin:30rpx 0rpx;position:relative;'>
+           <image style="width:30rpx;height:35rpx;position:absolute;top:20rpx;left:10rpx;" src="/image/submit/submit_verificationcode_icon@2x.png" > </image>
+         <input type='text' bindinput='codeInput'  placeholder='请输入验证码' style='width:210rpx;border:1px solid #939db8;height:70rpx;border-radius:20rpx;font-size:32rpx;padding-left:40rpx;'></input>
+           <button style='width:108px;font-size:16px;margin-top:-80rpx;margin-left:270rpx;background-color:#e9f3fd;color:#9ea8c1;' bindtap="certificationButton" disabled='{{disabled}}'>{{codeTime}}</button>
+         </view>
+         <view>
+         <button bindtap="modelSubmit" style='height:100rpx;color:#fff;width:330rpx;border-radius:40rpx;margin-left:60rpx;position:relative;'><image src="/image/submit/submit_btn@2x.png" style='width:310rpx;height:100rpx;'></image><text style="position:absolute;bottom:10rpx;right:75rpx;">确定提交</text></button>
+         </view>
+         <view style='color:red;margin-left:150rpx;'>{{error}}</view>
+      </view>
+  </view>
+</view>
