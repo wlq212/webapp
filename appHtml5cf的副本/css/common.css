@@ -1,0 +1,55 @@
+
+.banneer{
+	height: 10rem;
+	width:50%;
+}
+
+.backgroundDDOne{
+	background:url(../img/smallbg.png);
+    background-size:98%;
+    background-repeat:no-repeat;
+    margin: 0rem;
+   
+   /* margin-top: -1.5em;*/
+}
+.ulList{
+	background: #fff;
+}
+.ulList>li{
+	list-style: none;
+
+}
+.time{
+	overflow: hidden;
+	margin-left:0rem;
+	margin-top: 10rem;
+}
+.time>li{
+	float: left;
+	width: 0.2rem;
+	margin-right: 2.5rem;
+	text-align: center;
+}
+.time>li>img{
+	width: 3.1rem;
+}
+.time>li>span{
+	margin-top: -3rem;
+	z-index: 1000;
+	position: absolute;
+	margin-left: 0.7rem;
+}
+li{
+	list-style: none;
+}
+
+#buttonfor{
+	width:15rem;
+	background:#232244;
+	border: 0px;
+}
+#buttonfor>img{
+	width:13rem;
+	margin: 0 auto;
+}
+

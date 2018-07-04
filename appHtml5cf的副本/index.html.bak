@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>我的财务官</title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+     <link href="css/common.css" rel="stylesheet">
+    <script type="text/javascript" charset="utf-8">
+  
+    </script>
+</head>
+<body style="width:26rem;background: #232244;margin: 0 auto;margin-left: 0.25rem;">
+<div >
+	     <div class="mui-scroll backgroundDDOne" style="margin-top: 0.4rem;">
+	     	<div>
+	     		 <div style="color: #fff;font-size: 2.5rem;width:20rem;overflow: hidden;margin:0rem  auto;text-align: center;margin-top: 17rem;height: 100px;">
+					 	<ul class='time' style="margin-top: 5rem;width:20rem;margin: 2rem auto;padding-left:3rem;">
+					 		<li><img src="img/js03_03.gif"><span id="one">3</span></li>
+					 		<li><img src="img/js03_03.gif"><span id="two">0</span></li>
+					 		<li><img src="img/js03_06.gif" style="width: 1.5rem;margin-left: 0.6rem;margin-top: -0.5rem;"></li>
+					 		<li><img src="img/js03_03.gif"><span id="three">0</span></li>
+					 		<li><img src="img/js03_03.gif"><span id="four">0</span></li>
+					 	</ul>
+				</div>
+				<div style="text-align: center;padding-top:9.4rem;padding-bottom:9rem;">
+					 <button id="buttonfor">
+					 	<img id="startOne" src="img/buttonct@2x.png">
+					 	<img id="startTwo"  style="display: none" src="img/startdown.png">
+					 	<img id="startThree" src="img/stop.png" style="display: none";/>
+					 </button>
+					<div><a href="http://web.5dcfo.com/lzhwz/appHtml5/index.html" style="color: #FFCF18;text-decoration:underline;">我也要参加活动</a></div>
+					<ul style="padding: 0 1.5rem;margin-top: -0.5rem;height: 3rem;" id="ullist">
+	   
+					</ul>
+				</div>
+			</div>
+			 
+		</div>
+	    </div>
+		
+	</body>
+	 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+	<script>
+		document.documentElement.style.fontSize=document.documentElement.clientWidth/26+'px';
+		  var u = navigator.userAgent, app = navigator.appVersion;
+	    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+	    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+	    if (isAndroid) {
+	       //这个是安卓操作系统
+	    }
+	    if (isIOS) {
+	　　　　//这个是ios操作系统
+	    }
+		
+		
+	    var x = 30,interval;
+	    var d;
+	    userObj={};
+	     var OBjEs="";
+         window.onload = function() {
+         	var time="1111-1-1 00:" + x + ":00";
+         	time=time.replace(/-/g,':').replace(' ',':');
+            time=time.split(':');
+            d=new Date(time[0],(time[1]-1),time[2],time[3],time[4],time[5]);  
+          $.get("https://devcenter.5dcfo.com/admin/wechat",{user_id:GetQueryString("question_id").split("_")[1],code:GetQueryString("code")},function(res){
+           	  OBjEs=JSON.parse(res).data;
+           	  if(!OBjEs){
+           	  	document.getElementById('buttonfor').setAttribute('disabled','disabled');
+           	  }
+         $.get("https://devcenter.5dcfo.com/api/share_cut_time",{question_id:GetQueryString("question_id").split("_")[0],token:GetQueryString("question_id").split("_")[2],user_id:GetQueryString("question_id").split("_")[1]},function(res){
+      	 
+      	 if(JSON.parse(res).error_no==0){
+    
+	      	 for(var acb=0;acb<JSON.parse(res).data.friends.length;acb++){
+	      	 	var listObj=$("<li style='color: #fff;overflow: hidden;'><img src='"+JSON.parse(res).data.friends[acb].icon+"' style='width:3rem;border-radius: 1.5rem;float: left;'><span style='float: left;margin: 1rem 0.2rem;'>"+JSON.parse(res).data.friends[acb].weixin+"</span><span style='float: right;margin:1rem 0.3rem;'>加速5分钟</span></li>")
+	        	    $("#ullist").append(listObj)
+	      	 }
+	      	
+      	 	if(JSON.parse(res).data.timestamp<JSON.parse(res).data.end_time){
+      	 		var time=timestampToTime(JSON.parse(res).data.end_time).replace(/-/g,':').replace(' ',':');
+                var time=time.split(':');
+                var d2=new Date(time[0],(time[1]-1),time[2],time[3],time[4],time[5]);
+                 
+      	 		var time2=timestampToTime(JSON.parse(res).data.timestamp).replace(/-/g,':').replace(' ',':');
+                var time2=time2.split(':');  
+                var d1=new Date(time2[0],(time2[1]-1),time2[2],time2[3],time2[4],time2[5]);
+                var x=(parseInt(d2 - d1) / 1000/60)>10?String(parseInt(d2 - d1) / 1000/60).split(".")[0]:"0"+String(parseInt(d2 - d1) / 1000/60).split(".")[0];
+                //两个时间相差的秒数
+                //两个时间相差的秒数
+                var ms="";
+                  
+                if(toString(x).split(".")[1]*0.1*60>10){
+                	ms=toString(x).split(".")[1]*0.1*60
+                }else{
+                	if(toString(x).split(".")[1]*0.1*60){
+                		ms=("0"+toString(x).split(".")[1]*0.1*60)
+                	}else{
+                		ms="00"
+                	}
+                	
+                }
+                 var timed="1111-01-01 00:" + x +":"+ms;
+                 var time3=timed.replace(/-/g,':').replace(' ',':');
+                 var time3=time3.split(':');
+                  d=new Date(time3[0],(time3[1]-1),time3[2],time3[3],time3[4],time3[5]);
+              
+	              interval = setInterval(function() {
+	            	var t="00"
+	                m = d.getMinutes();
+	                var s = d.getSeconds();
+	                m = m < 10 ? "0" + m : m;
+	                s = s < 10 ? "0" + s : s;
+		            document.getElementById("one").innerHTML=String(m).split("")[0]
+		            document.getElementById("two").innerHTML=String(m).split("")[1]
+		            document.getElementById("three").innerHTML=String(s).split("")[0]
+		            document.getElementById("four").innerHTML=String(s).split("")[1]
+	                if (m == 0 && s == 0) {
+	                    clearInterval(interval);
+	                    document.getElementById('startOne').style.display="none";
+	         	        document.getElementById('startTwo').style.display="none";
+	                    document.getElementById('startThree').style.display="inline-block";
+	                    return;
+	                }
+	                d.setSeconds(s - 1);
+	            }, 1000);
+	            for(var a=0;a<JSON.parse(res).data.friends.length;a++){
+	      	 		if(JSON.parse(res).data.friends[a].openid==OBjEs.openid){
+	      	 			 document.getElementById('startOne').style.display="none";
+			         	   document.getElementById('startTwo').style.display="inline-block";
+			               document.getElementById('startThree').style.display="none";
+			               document.getElementById('buttonfor').setAttribute('disabled','disabled');
+	      	 		}
+	      	 	}
+      	 	}
+      	 	if(JSON.parse(res).data.timestamp>=JSON.parse(res).data.end_time){
+               document.getElementById("one").innerHTML=0
+               document.getElementById("two").innerHTML=0
+               document.getElementById("three").innerHTML=0
+               document.getElementById("four").innerHTML=0
+               document.getElementById('startOne').style.display="none";
+         	   document.getElementById('startTwo').style.display="none";
+               document.getElementById('startThree').style.display="inline-block";
+               document.getElementById('buttonfor').setAttribute('disabled','disabled');
+      	 	   clearInterval(interval)
+      	 	}
+      	 }
+      })
+         })
+        
+        }
+        
+        //砍时间button
+         document.getElementById('buttonfor').onclick=function(){
+	        $.post("https://devcenter.5dcfo.com/api/share_cut_time",JSON.stringify({question_id:GetQueryString("question_id").split("_")[0],user_id:GetQueryString("question_id").split("_")[1],openid: OBjEs.openid,weixin: OBjEs.nickname,icon:OBjEs.headimgurl}),function(res){
+	         if(JSON.parse(res).error_no==27){
+	         	document.getElementById('buttonfor').setAttribute('disabled','disabled');
+	         	alert("该问题砍时间达到上限")
+	         }
+	        if(JSON.parse(res).error_no==0){
+		        document.getElementById('startTwo').style.display="inline-block";
+	         	document.getElementById('startOne').style.display="none";
+	         	$("#ullist").empty();
+	         	//location.reload();
+	        	for(var ac=0;ac<JSON.parse(res).data.friends.length;ac++){
+	        		var listObj=$("<li style='color: #fff;overflow: hidden;'><img src="+JSON.parse(res).data.friends[ac].icon+" style='width:3rem;border-radius: 1.5rem;float: left;'><span style='float: left;margin: 1rem 0.2rem;'>"+JSON.parse(res).data.friends[ac].weixin+"</span><span style='float: right;margin:1rem 0.3rem;'>加速5分钟</span></li>")
+	        	    $("#ullist").append(listObj)
+	        	}
+	        
+	      	 	if(JSON.parse(res).data.timestamp<JSON.parse(res).data.end_time){
+	      	 	var time=timestampToTime(JSON.parse(res).data.end_time).replace(/-/g,':').replace(' ',':');
+                var time=time.split(':');
+                var d2=new Date(time[0],(time[1]-1),time[2],time[3],time[4],time[5]);
+                
+      	 		var time2=timestampToTime(JSON.parse(res).data.timestamp).replace(/-/g,':').replace(' ',':');
+                var time2=time2.split(':');  
+                var d1=new Date(time2[0],(time2[1]-1),time2[2],time2[3],time2[4],time2[5]);
+                var x=(parseInt(d2 - d1) / 1000/60)>10?String(parseInt(d2 - d1) / 1000/60).split(".")[0]:"0"+String(parseInt(d2 - d1) / 1000/60).split(".")[0];
+                
+                //两个时间相差的秒数
+                 var ms="";
+                if(toString(x).split(".")[1]*0.1*60>10){
+                	ms=toString(x).split(".")[1]*0.1*60
+                }else{
+                	if(toString(x).split(".")[1]*0.1*60){
+                		ms=("0"+toString(x).split(".")[1]*0.1*60)
+                	}else{
+                		ms="00"
+                		
+                	}
+                	
+                }
+	           var timed="1111-01-01 00:" + x +":"+ms;
+	            var time3=timed.replace(/-/g,':').replace(' ',':');
+	            var time3=time3.split(':');
+	            d=new Date(time3[0],(time3[1]-1),time3[2],time3[3],time3[4],time3[5]);
+	             interval = setInterval(function() {
+	            	var t="00"
+	                m = d.getMinutes();
+	                var s = d.getSeconds();
+	                m = m < 10 ? "0" + m : m;
+	                s = s < 10 ? "0" + s : s;
+		            document.getElementById("one").innerHTML=String(m).split("")[0]
+		            document.getElementById("two").innerHTML=String(m).split("")[1]
+		            document.getElementById("three").innerHTML=String(s).split("")[0]
+		            document.getElementById("four").innerHTML=String(s).split("")[1]
+	                if (m == 0 && s == 0) {
+	                    clearInterval(interval);
+	                    document.getElementById('startOne').style.display="none";
+	         	        document.getElementById('startTwo').style.display="none";
+	                    document.getElementById('startThree').style.display="inline-block";
+	                    return;
+	                }
+	                d.setSeconds(s - 1);
+	            }, 1000);
+      	 	}
+      	 	if(JSON.parse(res).data.timestamp>=JSON.parse(res).data.end_time){
+               document.getElementById("one").innerHTML=0
+               document.getElementById("two").innerHTML=0
+               document.getElementById("three").innerHTML=0
+               document.getElementById("four").innerHTML=0
+               document.getElementById('startOne').style.display="none";
+         	   document.getElementById('startTwo').style.display="none";
+               document.getElementById('startThree').style.display="inline-block";
+               document.getElementById('buttonfor').setAttribute('disabled','disabled');
+      	 	   clearInterval(interval)
+      	 	  }
+	      	   }
+	        })
+         	document.getElementById('buttonfor').setAttribute('disabled','disabled');
+         	return ;
+         }
+         
+         
+      function timestampToTime(timestamp) {
+	        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+	        Y = date.getFullYear() + '-';
+	        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+	        D = date.getDate() + ' ';
+	        h = date.getHours() + ':';
+	        m = date.getMinutes() + ':';
+	        s = date.getSeconds();
+	        return Y+M+D+h+m+s;
+       }
+  
+       
+		function GetQueryString(name)
+		{
+		     var reg = new RegExp("(^|[&?])"+ name +"=([^&]*)(&|$)");
+		     var r =document.URL.match(reg);
+		     if(r!=null)return  unescape(r[2]); return null;
+		}
+</script>
+</body>
+</html>

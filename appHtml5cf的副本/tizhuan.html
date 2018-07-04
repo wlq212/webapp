@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+			 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+	</head>
+	<body>
+		
+		<button id="hh">提交</button>
+		
+	</body>
+	<script>
+		var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8900ebd69c04ab38&redirect_uri=http://web.5dcfo.com/lzhwz/appHtml5/index.html?'question_id=3300129a2dcc11e8aea500163e0a8357&token=9a4dd8ba2dcc11e8aea500163e0a8357&user_id=3cbc99b0237811e8bd9700163e0a8357'&response_type=code&scope=snsapi_userinfo&state=STATE%23wechat_redirect&connect_redirect=1#wechat_redirect";
+		     var reg = new RegExp("(^|[&?])"+ 'question_id' +"=([^&]*)(&|$)");
+		     var r = url.match(reg);
+		     console.log( r)
+		   /*  console.log(r)
+		     if(r!=null)return  unescape(r[2]); return null;*/
+	</script>
+</html>
